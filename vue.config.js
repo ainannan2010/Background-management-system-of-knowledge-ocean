@@ -16,17 +16,22 @@ module.exports = {
     resolve: {
       extensions: ['.js', '.vue', '.json'],
       alias: {
-        '@': resolve('src'),
-        '@api': resolve('src/api'),
-        '@assets': resolve('src/assets'),
-        '@comp': resolve('src/components'),
-        '@router': resolve('src/router'),
-        '@store': resolve('src/store'),
-        '@styles': resolve('src/styles'),
-        '@views': resolve('src/views'),
-        // '@utils': resolve('src/utils'),
+
         // '@mixins': resolve('src/mixins'),
       },
     },
   },
+  chainWebpack: (config) => {
+    config.resolve.alias
+      .set('@', resolve('./src'))
+
+      .set('@components', resolve('src/components'))
+      .set('@views', resolve('src/views'))
+      .set('@assets', resolve('src/assets'))
+      .set('@utils', resolve('src/utils'))
+
+      .set('@router', resolve('src/router'))
+      .set('@store', resolve('src/store'))
+      .set('@styles', resolve('src/styles'))
+  }
 }

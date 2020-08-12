@@ -18,22 +18,37 @@
 </template>
 <script>
 import { reactive, toRefs } from '@vue/composition-api'
+import { request } from '@utils/request'
 
 export default {
   // vue 3.0+
+  // eslint-disable-next-line no-unused-vars
   setup(props, { root }) {
     // 创建响应式数据对象，类似于data
     const state = reactive({ userName: 'yangwuc', password: 'Admin@1234' })
     // 代替methods的写法
-    const login = () => {
+    const login = async () => {
       const { userName, password } = state
       if (!userName || !password) return
-      if (userName === 'yangwuc' && password === 'Admin@1234') {
-        sessionStorage.setItem('userName', userName)
-        // this.$router.push('/home') // vue 2.0+
-        root.$router.push('/home') // vue 3.0+
-      } else {
-        alert('用户名&密码不匹配')
+      try {
+        const { success, message, data } = await request({
+          method: 'post',
+          url: '/login',
+          data: {
+            userName,
+            password,
+          },
+        })
+
+        if (!success) {
+          alert(message)
+          return
+        }
+
+        sessionStorage.setItem('userName', data)
+        root.$router.push('/home')
+      } catch (error) {
+        console.log('error', error)
       }
     }
 

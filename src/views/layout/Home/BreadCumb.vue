@@ -2,10 +2,10 @@
   <div class="crumbsBox">
     <div class="crumbs">
       <span :key="index" v-for="(item, index) in cumbList">
-        <span
+        <router-link
           :class="['title', index === cumbList.length-1 ? 'actived': null]"
-          a="1"
-        >{{item.meta.title}}</span>
+          :to="{path: item.path}"
+        >{{item.meta.title}}</router-link>
         <span v-if="index<cumbList.length-1 && cumbList[1].meta.title">/</span>
       </span>
     </div>
@@ -40,7 +40,6 @@ export default {
      */
     onMounted(() => {
       // 路由信息
-      console.log('***--*********:', root.$route.matched[1]) // eslint-disable-line
       state.cumbList = root.$route.matched
     })
     watch(
@@ -68,6 +67,7 @@ export default {
     .title {
       margin: 0 2px;
       cursor: pointer;
+      color: @global-font-black-color;
       &:hover {
         color: @global-hover-color;
       }

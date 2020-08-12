@@ -27,7 +27,6 @@ export default {
      */
 
     return { ...toRefs(state), goback }
-
   },
 }
 </script>

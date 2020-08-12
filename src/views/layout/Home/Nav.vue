@@ -1,7 +1,7 @@
 <template>
   <div class="sideBox">
     <div class="logoBox">
-      <img src="~@assets/logo.png" />
+      <img src="@assets/logo.png" />
       <span>学海图书管理系统</span>
     </div>
     <ul class="sideWrapper" :key="index" v-for="(item, index) in sideList">
@@ -74,15 +74,6 @@ export default {
 <style scoped lang='less'>
 @import '~@styles/variables.less';
 .sideBox {
-  ul,
-  li {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  a {
-    text-decoration: none;
-  }
   width: 250px;
   color: #fff;
   font-weight: 700;
