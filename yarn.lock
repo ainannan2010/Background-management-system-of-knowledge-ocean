@@ -1365,6 +1365,13 @@
   optionalDependencies:
     prettier "^1.18.2"
 
+"@vue/composition-api@^1.0.0-beta.8":
+  version "1.0.0-beta.8"
+  resolved "https://registry.npmjs.org/@vue/composition-api/-/composition-api-1.0.0-beta.8.tgz#3e821b1f47c4c2f898c6575411f7101b1e596246"
+  integrity sha512-qpYFyUXEjm/7LAXAEk2gCAp1a8Hzdt8KpMxVRo+XzO2tgM4tWJGxO+nh93lDdNah6k8XTS9ETepZX76dvEO1Uw==
+  dependencies:
+    tslib "^2.0.0"
+
 "@vue/eslint-config-airbnb@^5.0.2":
   version "5.1.0"
   resolved "https://registry.npm.taobao.org/@vue/eslint-config-airbnb/download/@vue/eslint-config-airbnb-5.1.0.tgz?cache=0&sync_timestamp=1592988201315&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40vue%2Feslint-config-airbnb%2Fdownload%2F%40vue%2Feslint-config-airbnb-5.1.0.tgz#6a72e166af18ac821120ff36aae8b76b940f28aa"
@@ -8070,6 +8077,11 @@ tslib@^1.10.0, tslib@^1.9.0:
   version "1.13.0"
   resolved "https://registry.npm.taobao.org/tslib/download/tslib-1.13.0.tgz?cache=0&sync_timestamp=1596751904317&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ftslib%2Fdownload%2Ftslib-1.13.0.tgz#c881e13cc7015894ed914862d276436fa9a47043"
   integrity sha1-yIHhPMcBWJTtkUhi0nZDb6mkcEM=
+
+tslib@^2.0.0:
+  version "2.0.1"
+  resolved "https://registry.npmjs.org/tslib/-/tslib-2.0.1.tgz#410eb0d113e5b6356490eec749603725b021b43e"
+  integrity sha512-SgIkNheinmEBgx1IUNirK0TUD4X9yjjBRTqqjggWCU3pUEqIk3/Uwl3yRixYKT6WjQuGiwDv4NomL3wqRCj+CQ==
 
 tty-browserify@0.0.0:
   version "0.0.0"
