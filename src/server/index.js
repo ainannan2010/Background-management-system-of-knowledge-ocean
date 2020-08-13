@@ -14,22 +14,51 @@ app.all('*', (req, res, next) => {
   next()
 })
 
-// get请求
-// app.get('/id', (req, res) => {
-//   res.send({ id: 2345 })
-// })
+const successData = { code: 1, success: true, message: 'ok', data: {} }
+const failData = { code: 0, success: false, message: 'error', data: {} }
 
-// post 传参
+// 登陆
 app.post('/login', (req, res) => {
   // const { demo_a } = req.query // query式传参接收方式
   // const { id } = req.params // restful式传参接收方式
   const { userName } = req.body // body式传参接收方式
   if (userName === 'yangwuc') {
-    return res.send({ code: 1, success: true, message: 'ok', data: userName })
+    return res.send({ ...successData, data: userName })
   }
 
-  return res.send({ code: 0, success: false, message: '用户名&密码不匹配', data: {} })
+  return res.send({ ...failData, message: '用户名&密码不匹配' })
 })
+
+const sideList = [
+  {
+    name: '首页',
+    url: '/',
+    children: [],
+  },
+  {
+    name: '数据统计',
+    url: '/sts',
+    children: [],
+  },
+  {
+    name: '信息管理',
+    url: '/mmt',
+    children: [
+      {
+        name: '列表展示',
+        url: '/index',
+        children: [],
+      },
+      {
+        name: '用户统计',
+        url: '/user',
+        children: [],
+      },
+    ],
+  },
+]
+// 获取菜单权限
+app.get('/menuList', (req, res) => res.send({ ...successData, data: sideList }))
 
 // 开起服务
 app.listen(9000, () => {

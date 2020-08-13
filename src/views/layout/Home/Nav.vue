@@ -23,40 +23,13 @@
 </template>
 
 <script>
-import { reactive, toRefs } from '@vue/composition-api'
+import { reactive, toRefs, onMounted } from '@vue/composition-api'
 
 export default {
-  setup() {
+  setup(props, { root }) {
     // 创建响应式数据对象，类似于data
     const state = reactive({
-      sideList: [
-        {
-          name: '首页',
-          url: '/',
-          children: [],
-        },
-        {
-          name: '数据统计',
-          url: '/sts',
-          children: [],
-        },
-        {
-          name: '信息管理',
-          url: '/mmt',
-          children: [
-            {
-              name: '列表展示',
-              url: '/index',
-              children: [],
-            },
-            {
-              name: '用户统计',
-              url: '/user',
-              children: [],
-            },
-          ],
-        },
-      ],
+      sideList: [],
     })
     // 代替methods的写法
 
@@ -66,7 +39,27 @@ export default {
      * toRefs的作用是使state里的数据具备响应式
      *
      */
+    // 获取菜单
+    const getMenuList = async () => {
+      try {
+        const { success, message, data = [] } = await root.$http({
+          method: 'get',
+          url: '/menuList',
+        })
 
+        if (!success) {
+          alert(message)
+          return
+        }
+
+        state.sideList = data
+      } catch (error) {
+        console.log('error', error)
+      }
+    }
+    onMounted(() => {
+      getMenuList()
+    })
     return { ...toRefs(state) }
   },
 }

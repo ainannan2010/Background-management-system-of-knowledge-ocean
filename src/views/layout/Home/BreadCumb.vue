@@ -44,7 +44,8 @@ export default {
     })
     watch(
       () => root.$route,
-      (to) => {
+      // eslint-disable-next-line no-unused-vars
+      (to, from) => {
         state.cumbList = to.matched
       }
     )
